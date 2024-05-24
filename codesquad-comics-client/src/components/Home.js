@@ -1,4 +1,5 @@
 import React from "react";
+import booksData from "../data/books";
 
 const Home = () => {
   return (
@@ -18,169 +19,30 @@ const Home = () => {
             available to the site administrator at this time.
           </p>
         </article>
+        <h2>COMPLETE COMIC COLLECTION</h2>
         <article className="comic-option">
-          <h2>COMPLETE COMIC COLLECTION</h2>
-          <div>
-            <article>
-              <a href="#">
-                <img src="/images/fun-home.jpeg" style={{width: "200px"}}/>
-              </a>
-              <p>
-                <em>Fun Home:A family Tragicomic</em> by Alison Bechedel
-              </p>
-              <p>5 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/watchmen.jpeg" style={{width: "200px"}} />
-              </a>
-              <p>
-                <em>Watchmen</em> by Alan Moore
-              </p>
-              <p>5 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img
-                  src="/images/hunter-x-hunter.jpeg"
-                  style={{width: "200px"}}
-                />
-              </a>
-              <p>
-                <em>Hunter X Hunter Vol. 1</em> by Yoshihiro Togashi
-              </p>
-              <p>5 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/lumberjanes.jpeg" style={{width: "200px"}} />
-              </a>
-              <p>
-                <em>Lumberjanes</em> by Noelle Stevenson
-              </p>
-              <p>4 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/one-piece.jpeg" style={{width: "200px"}} />
-              </a>
-              <p>
-                <em> One Piece, Vol. 1: Romance Dawn</em> by Eiichiro Oda
-              </p>
-              <p>5 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/wake.jpeg" style={{width: "200px"}} />
-              </a>
-              <p>
-                <em>Wake: The Hidden History of Women-Led Slave Revolts</em> by
-                Rebecca Hall
-              </p>
-              <p>4 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="black-panther-card.html">
-                <img
-                  src="/images/black-panther.jpeg"
-                  style={{width: "200px"}}
-                />
-              </a>
-              <p>
-                <em>Black Panther: A Nation Under our Feet Book 1</em> by
-                Ta-Nehisi Coates
-              </p>
-              <p>3 Stars</p>
-              <p>
-                <a href="black-panther-card.html">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img
-                  src="/images/the-walking-dead.jpeg"
-                  style={{width: "200px"}}
-                />
-              </a>
-              <p>
-                <em>The Walking Dead, Vol 1: Days Gone Bye</em> by Robert
-                Kirkman
-              </p>
-              <p>4 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/march.jpeg" style={{width: "200px"}} />
-              </a>
-              <p>
-                <em>March:Book One</em> by John Lewis
-              </p>
-              <p>5 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/batman.jpeg" style={{width: "200px"}} />
-              </a>
-              <p>
-                <em>Batman: The Dark Knight Returns</em> by Frank Miller
-              </p>
-              <p>3 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img src="/images/queer.jpeg"  style={{width: "200px"}}/>
-              </a>
-              <p>
-                <em>Queer: A Graphic History</em> by Meg-John Barker
-              </p>
-              <p>4 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-            <article>
-              <a href="#">
-                <img
-                  src="/images/parable-of-the-sower.jpeg"
-                  style={{width: "200px"}}
-                />
-              </a>
-              <p>
-                <em>Parable of the Sower</em> by Octavia E. Butler
-              </p>
-              <p>4 Stars</p>
-              <p>
-                <a href="#">Details</a>
-              </p>
-            </article>
-          </div>
+          {booksData.map((book) => {
+            return (
+              <div>
+                <article>
+                  <a href="#">
+                    <img
+                      src={`./images/${book.image}`}
+                      alt={book.title}
+                      style={{ width: "200px" }}
+                    />
+                  </a>
+                  <p>
+                    <em>{book.title}</em> by {book.author}
+                  </p>
+                  <p>{book.rating}</p>
+                  <p>
+                    <a href="#">Details</a>
+                  </p>
+                </article>
+              </div>
+            );
+          })}
           <button type="button">Display More</button>
         </article>
       </main>
