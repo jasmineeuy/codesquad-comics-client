@@ -1,13 +1,13 @@
 import Header from "./shared/Header";
 import Footer from "./shared/Footer";
-import Update from "./components/Update";
+import Admin from "./components/Admin";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-     <Update/>
-      <Footer/>
+      <Header />
+      <Admin />
+      <Footer />
     </div>
   );
 }
