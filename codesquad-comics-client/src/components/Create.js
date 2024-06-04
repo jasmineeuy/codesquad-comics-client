@@ -1,22 +1,53 @@
 import React from "react";
 
 const Create = () => {
+
+  //create handler function to keep track of change of each input when typing via console
+  const handleFormChange = (event) => {
+    console.log(event.target.value);
+  };
+  //hanler function to prevent autosubmit of form and print working if it works
+  const createFormSubmission = (event) => {
+    event.preventDefault();
+    console.log("createFormSubmission working");
+  };
+
+  const content = "Synopsis";
   return (
     <div>
       <main>
-        <form action="#">
+        <form onSubmit={createFormSubmission}>
           <h1>CREATE NEW COMIC</h1>
           <div>
             <label htmlFor="title">Title</label>
-            <input type="text" className="title" id="title" placeholder="Title" />
+            <input
+              type="text"
+              className="title"
+              id="title"
+              placeholder="Title"
+              required="true"
+              onChange={handleFormChange}
+            />
           </div>
           <div>
             <label htmlFor="author">Author</label>
-            <input type="text" className="author" id="author" placeholder="Author" />
+            <input
+              type="text"
+              className="author"
+              id="author"
+              placeholder="Author"
+              required="true"
+              onChange={handleFormChange}
+            />
           </div>
           <div>
             <label htmlFor="publisher">Publisher</label>
-            <select className="publisher" id="publisher">
+            <select
+              className="publisher"
+              id="publisher"
+              required="true"
+              onChange={handleFormChange}
+            >
               <option value="" disabled selected>
                 Select
               </option>
@@ -35,7 +66,14 @@ const Create = () => {
           </div>
           <div>
             <label htmlFor="genre">Genre</label>
-            <input type="text" className="genre" id="genre" placeholder="Genre" />
+            <input
+              type="text"
+              className="genre"
+              id="genre"
+              placeholder="Genre"
+              required="true"
+              onChange={handleFormChange}
+            />
           </div>
           <div>
             <label htmlFor="num-pages">Number of Pages</label>
@@ -44,17 +82,33 @@ const Create = () => {
               className="num-pages"
               id="num-pages"
               placeholder="Number of Pages"
+              required="true"
+              onChange={handleFormChange}
             />
           </div>
           <div>
             <label htmlFor="rating">Rating</label>
-            <input type="number" className="rating" id="rating" />
+            <input
+              type="number"
+              className="rating"
+              id="rating"
+              required="true"
+              onChange={handleFormChange}
+              placeholder="rating"
+            />
           </div>
           <div>
             <label htmlFor="synopsis">Synospsis</label>
-            <textarea id="synopsis" className="synopsis" rows="2" cols="40">
-              Synopsis
-            </textarea>
+
+            <textarea
+              id="synopsis"
+              className="synopsis"
+              rows="2"
+              cols="40"
+              required="true"
+              onChange={handleFormChange}
+              defaultValue={content}
+            />
           </div>
           <div>
             <input type="submit" value="Submit" />

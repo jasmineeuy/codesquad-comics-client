@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import booksData from "../data/books";
 
 const Home = () => {
+  //creating state to hold data for books intialize setter function to empty array
+  const [books, setBooks] = useState([]);
+
+  //create useEffect hook to run once on render
+  useEffect(() => {
+    setBooks(booksData);
+  }, []);
+
   return (
-    <div>
+    <div >
       <main className="index">
         <article className="index-article">
           <h1>CODESQUAD COMICS</h1>
@@ -21,10 +29,10 @@ const Home = () => {
         </article>
         <h2>COMPLETE COMIC COLLECTION</h2>
         <article className="comic-option">
-          {booksData.map((book) => {
+          {books.map((book) => {
             return (
-              <div>
-                <article>
+              <div key = {book._id}>
+                <article >
                   <a href="#">
                     <img
                       src={`./images/${book.image}`}

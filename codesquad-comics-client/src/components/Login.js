@@ -1,6 +1,6 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({updateUser,user}) => {
   return (
     <div>
       <main>
@@ -12,7 +12,7 @@ const Login = () => {
               type="text"
               name="username"
               id="username"
-              placeholder="Username"
+              placeholder="username"
             />
           </div>
           <div>
@@ -21,7 +21,7 @@ const Login = () => {
               type="password"
               name="password"
               id="password"
-              placeholder="Password"
+              placeholder="password"
             />
           </div>
           <input type="submit" value="Submit" />

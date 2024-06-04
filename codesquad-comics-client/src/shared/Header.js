@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({updateUser,user}) => {
   return (
     <div>
       <header>
@@ -22,7 +22,7 @@ const Header = () => {
               <a href="login.html">Login</a>
             </li>
           </ul>
-          <i class="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars"></i>
         </nav>
       </header>
     </div>

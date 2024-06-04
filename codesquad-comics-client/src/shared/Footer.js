@@ -25,20 +25,20 @@ const Footer = () => {
           </div>
           <div>
             <h3>Follow Us</h3>
-            <div class="media-icon">
+            <div className="media-icon">
               <div>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-facebook"></i>
+                  <i className="fa-brands fa-facebook"></i>
                 </a>
               </div>
               <div>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
               </div>
               <div>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </a>
               </div>
             </div>
