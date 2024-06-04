@@ -1,10 +1,18 @@
 import React from "react";
 
-const Login = ({updateUser,user}) => {
+const loginSubmit = (event) => {
+  event.preventDefault();
+  console.log("the login is working");
+};
+const handleFormChange = (event) =>{
+  console.log(event.target.value);
+}
+
+const Login = ({ updateUser, user }) => {
   return (
     <div>
       <main>
-        <form action="#">
+        <form onSubmit={loginSubmit} action="#">
           <h1>LOGIN</h1>
           <div>
             <label htmlFor="username">Username</label>
@@ -13,6 +21,8 @@ const Login = ({updateUser,user}) => {
               name="username"
               id="username"
               placeholder="username"
+              onChange={handleFormChange}
+              required
             />
           </div>
           <div>
@@ -22,6 +32,8 @@ const Login = ({updateUser,user}) => {
               name="password"
               id="password"
               placeholder="password"
+              onChange={handleFormChange}
+              required
             />
           </div>
           <input type="submit" value="Submit" />
