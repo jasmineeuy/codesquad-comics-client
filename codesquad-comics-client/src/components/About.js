@@ -1,7 +1,7 @@
 import React from "react";
 const About = () => {
   return (
-    <div>
+    
       <main>
         <section className="about-text">
           <h1>ABOUT CODESQUAD COMICS</h1>
@@ -26,7 +26,6 @@ const About = () => {
           </ul>
         </section>
       </main>
-    </div>
   );
 };
 

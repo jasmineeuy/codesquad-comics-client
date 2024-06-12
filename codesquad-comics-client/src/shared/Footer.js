@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -14,38 +15,38 @@ const Footer = () => {
           <div>
             <h3>Links</h3>
             <p>
-              <a href="#">Home</a>
+              < Link to="/">Home</Link>
             </p>
             <p>
-              <a href="#">About</a>
+              <Link  to="/about">About</Link>
             </p>
             <p>
-              <a href="#">Login</a>
+              <Link to="/login">Login</Link>
             </p>
           </div>
           <div>
             <h3>Follow Us</h3>
             <div className="media-icon">
               <div>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <Link to="#" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-facebook"></i>
-                </a>
+                </Link>
               </div>
               <div>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <Link to="#" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-instagram"></i>
-                </a>
+                </Link>
               </div>
               <div>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <Link to="#" target="_blank" rel="noopener noreferrer">
                   <i className="fa-brands fa-twitter"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div>
             <h3>A PRODUCT OF</h3>
-            <a
+            <Link
               href="http://codesquad.org/"
               target="_blank"
               rel="noopener noreferrer"
@@ -54,7 +55,7 @@ const Footer = () => {
                 src="/images/CodeSquad-logo.png"
                 alt="code squad logo"
               />
-            </a>
+            </Link>
           </div>
         </section>
       </footer>

@@ -1,25 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Header = ({updateUser,user}) => {
+const Header = ({ updateUser, user }) => {
   return (
     <div>
       <header>
         <nav>
-          <a href="index.html">
+          <Link to="/">
             <img
               src="/images/CodeSquad-Comics-logo.png"
               alt="codesquad comic logo"
             />
-          </a>
+          </Link>
+
           <ul>
             <li>
-              <a href="index.html">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="about.html">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="login.html">Login</a>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
           <i className="fa-solid fa-bars"></i>
