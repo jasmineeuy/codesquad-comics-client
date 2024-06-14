@@ -23,7 +23,7 @@ function App() {
       <Header updateUser={updateUser} user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/update" element={<Update />} />

@@ -1,17 +1,37 @@
 import React, { useState, useEffect } from "react";
-import booksData from "../data/books";
+// import booksData from "../data/books";
 
 const Home = () => {
   //creating state to hold data for books intialize setter function to empty array
   const [books, setBooks] = useState([]);
 
+  const [errorMessage, setErrorMessage] = useState("");
+  const url = "http://localhost:8080";
+
   //create useEffect hook to run once on render
   useEffect(() => {
-    setBooks(booksData);
+    fetch(`${url}/api/books`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.statusCode === 200) {
+          setBooks(result.data);
+        } else {
+          throw new Error(result.error.message);
+        }
+      })
+      .catch((error) => setErrorMessage(error.message));
   }, []);
 
+  console.log("books=", books);
+  console.log("message=", errorMessage);
+
   return (
-    <div >
+    <div>
       <main className="index">
         <article className="index-article">
           <h1>CODESQUAD COMICS</h1>
@@ -29,13 +49,16 @@ const Home = () => {
         </article>
         <h2>COMPLETE COMIC COLLECTION</h2>
         <article className="comic-option">
-          {books.map((book) => {
-            return (
-              <div key = {book._id}>
-                <article >
-                  <a href="#">
+          {errorMessage ? (
+            <p>{errorMessage}</p>
+          ) : (
+            books &&
+            books.map((book) => (
+              <div key={book._id}>
+                <article>
+                  <a href={`/book/${book._id}`}>
                     <img
-                      src={`./images/${book.image}`}
+                      src={`/images/${book.image}`}
                       alt={book.title}
                       style={{ width: "200px" }}
                     />
@@ -45,12 +68,12 @@ const Home = () => {
                   </p>
                   <p>{book.rating}</p>
                   <p>
-                    <a href="#">Details</a>
+                    <a href={`/book/${book._id}`}>Details</a>
                   </p>
                 </article>
               </div>
-            );
-          })}
+            ))
+          )}
           <button type="button">Display More</button>
         </article>
       </main>

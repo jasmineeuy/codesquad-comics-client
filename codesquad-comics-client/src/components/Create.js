@@ -2,6 +2,11 @@ import React from "react";
 
 const Create = () => {
 
+  const url ="http://localhost:8080";
+  const newBook = {
+    
+  }
+
   //create handler function to keep track of change of each input when typing via console
   const handleFormChange = (event) => {
     console.log(event.target.value);
@@ -9,6 +14,7 @@ const Create = () => {
   //hanler function to prevent autosubmit of form and print working if it works
   const createFormSubmission = (event) => {
     event.preventDefault();
+    
     console.log("createFormSubmission working");
   };
 
