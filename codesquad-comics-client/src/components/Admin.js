@@ -62,12 +62,12 @@ const Admin = () => {
                     </Link>
                   </td>
                   <td>
-                    <input
+                    <button
                       className="delete-btn"
                       type="Button"
                       defaultValue="DELETE"
                       onClick={deleteBook(book.id)}
-                    />
+                    >DELETE</button>
                   </td>
                 </tr>
               ))}

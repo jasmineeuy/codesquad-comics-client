@@ -6,11 +6,10 @@ const Home = () => {
   const [books, setBooks] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState("");
-  const url = "http://localhost:8080";
 
   //create useEffect hook to run once on render
   useEffect(() => {
-    fetch(`${url}/api/books`, {
+    fetch(`http://localhost:8080/api/books`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",

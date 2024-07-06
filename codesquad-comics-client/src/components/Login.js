@@ -24,7 +24,7 @@ const Login = ({ updateUser, user }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:8080/api/login/local`, {
+    fetch(`http://localhost:8080/login/local`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userinfo),
