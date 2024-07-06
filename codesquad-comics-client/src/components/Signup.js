@@ -1,18 +1,61 @@
-import React from "react";
+import {React,useState} from "react";
 
-const signUpSubmit = (event) => {
-  event.preventDefault();
-  console.log("the sign up is working");
-};
-const handleSignUpFormChange = (event) =>{
-  console.log(event.target.value);
-}
 
 const SignUp = ({ updateUser, user }) => {
+  const [username, setUsername] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [firstName, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  const userinfo = {
+    firstName: firstName,
+    lastName: lastName,
+    username: username,
+    password: password,
+  };
+
+  const handleFirstNameChange = (event) => {
+    console.log(event.target.value);
+    setName(event.target.value);
+  };
+
+  const handleLastNameChange = (event) => {
+    console.log(event.target.value);
+    setLastName(event.target.value);
+  };
+
+  const handleUsernameChange = (event) => {
+    console.log(event.target.value);
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    console.log(event.target.value);
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    fetch(`http://localhost:8080/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userinfo),
+    })
+      .then((response) => response.json())
+      .then((result) =>
+        localStorage.setItem(
+          "user",
+          JSON.stringify(result.data),
+          console.log("result", result)
+        )
+      )
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <main>
-        <form onSubmit={signUpSubmit} action="#">
+        <form onSubmit={handleLogin} action="#">
           <h1>Sign Up</h1>
           <div>
             <label htmlFor="firstName">First Name</label>
@@ -21,7 +64,7 @@ const SignUp = ({ updateUser, user }) => {
               name="firstName"
               id="firstName"
               placeholder="firstName"
-              onChange={handleSignUpFormChange}
+              onChange={handleFirstNameChange}
               required
             />
           </div>
@@ -32,7 +75,7 @@ const SignUp = ({ updateUser, user }) => {
               name="lastName"
               id="lastName"
               placeholder="lastName"
-              onChange={handleSignUpFormChange}
+              onChange={handleLastNameChange}
               required
             />
           </div>
@@ -43,7 +86,7 @@ const SignUp = ({ updateUser, user }) => {
               name="username"
               id="username"
               placeholder="username"
-              onChange={handleSignUpFormChange}
+              onChange={handleUsernameChange}
               required
             />
           </div>
@@ -54,7 +97,7 @@ const SignUp = ({ updateUser, user }) => {
               name="password"
               id="password"
               placeholder="password"
-              onChange={handleSignUpFormChange}
+              onChange={handlePasswordChange}
               required
             />
           </div>

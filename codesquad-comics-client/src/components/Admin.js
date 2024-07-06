@@ -39,7 +39,7 @@ const Admin = () => {
       <main>
         <div className="admin">
           <h1>ADMIN PAGE</h1>
-          <input type="Button" value="ADD NEW COMIC" />
+          <input type="Button" defaultValue="ADD NEW COMIC" />
         </div>
         <div className="table">
           <table className="comic-table">
@@ -65,7 +65,7 @@ const Admin = () => {
                     <input
                       className="delete-btn"
                       type="Button"
-                      value="DELETE"
+                      defaultValue="DELETE"
                       onClick={deleteBook(book.id)}
                     />
                   </td>

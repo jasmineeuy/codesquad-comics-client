@@ -1,11 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
-
-  const url ="http://localhost:8080";
-  const newBook = {
-    
-  }
+  const navigate = useNavigate();
 
   //create handler function to keep track of change of each input when typing via console
   const handleFormChange = (event) => {
@@ -14,9 +11,39 @@ const Create = () => {
   //hanler function to prevent autosubmit of form and print working if it works
   const createFormSubmission = (event) => {
     event.preventDefault();
-    
-    console.log("createFormSubmission working");
+    const body = {
+      title: event.target.title.value,
+      author: event.target.author.value,
+      publisher: event.target.publisher.value,
+      genre: event.target.genre.value,
+      pages: event.target.pages.value,
+      rating: event.target.rating.value,
+      synopsis: event.target.synopsis.value,
+    };
+    console.log(
+      "checking",
+      body.title,
+      body.author,
+      body.publisher,
+      body.genre,
+      body.pages,
+      body.rating,
+      body.synopsis
+    );
+
+    fetch("http://localhost:8080/api/books/create/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json(), console.log("the body is", body))
+      .then((result) => console.log(result), navigate("/admin"))
+      .catch((error) => console.log(error));
   };
+
+  console.log("createFormSubmission working");
 
   const content = "Synopsis";
   return (
@@ -31,7 +58,7 @@ const Create = () => {
               className="title"
               id="title"
               placeholder="Title"
-              required="true"
+              required={true}
               onChange={handleFormChange}
             />
           </div>
@@ -42,7 +69,7 @@ const Create = () => {
               className="author"
               id="author"
               placeholder="Author"
-              required="true"
+              required={true}
               onChange={handleFormChange}
             />
           </div>
@@ -51,23 +78,23 @@ const Create = () => {
             <select
               className="publisher"
               id="publisher"
-              required="true"
+              required={true}
               onChange={handleFormChange}
             >
-              <option value="" disabled selected>
+              <option defaultValue="" disabled onChange={handleFormChange}>
                 Select
               </option>
-              <option value="boom-box">BOOM!Box</option>
-              <option value="dc-comics">DC Comics</option>
-              <option value="harry-abrams">Harry N. Abrams</option>
-              <option value="icon-books">Icon Books</option>
-              <option value="image-comics">Image Comics</option>
-              <option value="marvel">Marvel</option>
-              <option value="simon-schuster">Simon & Schuster</option>
-              <option value="top-shelf-productions">
+              <option defaultValue="boom-box">BOOM!Box</option>
+              <option defaultValue="dc-comics">DC Comics</option>
+              <option defaultValue="harry-abrams">Harry N. Abrams</option>
+              <option defaultValue="icon-books">Icon Books</option>
+              <option defaultValue="image-comics">Image Comics</option>
+              <option defaultValue="marvel">Marvel</option>
+              <option defaultValue="simon-schuster">Simon & Schuster</option>
+              <option defaultValue="top-shelf-productions">
                 Top Shelf Productions
               </option>
-              <option value="viz-media-llc">VIZ Media LLC</option>
+              <option defaultValue="viz-media-llc">VIZ Media LLC</option>
             </select>
           </div>
           <div>
@@ -77,18 +104,18 @@ const Create = () => {
               className="genre"
               id="genre"
               placeholder="Genre"
-              required="true"
+              required={true}
               onChange={handleFormChange}
             />
           </div>
           <div>
-            <label htmlFor="num-pages">Number of Pages</label>
+            <label htmlFor="pages">Number of Pages</label>
             <input
               type="number"
-              className="num-pages"
-              id="num-pages"
+              className="pages"
+              id="pages"
               placeholder="Number of Pages"
-              required="true"
+              required={true}
               onChange={handleFormChange}
             />
           </div>
@@ -98,7 +125,7 @@ const Create = () => {
               type="number"
               className="rating"
               id="rating"
-              required="true"
+              required={true}
               onChange={handleFormChange}
               placeholder="rating"
             />
@@ -111,13 +138,13 @@ const Create = () => {
               className="synopsis"
               rows="2"
               cols="40"
-              required="true"
+              required={true}
               onChange={handleFormChange}
               defaultValue={content}
             />
           </div>
           <div>
-            <input type="submit" value="Submit" />
+            <input type="Submit" defaultValue="Submit" />
           </div>
         </form>
       </main>
